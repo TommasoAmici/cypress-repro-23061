@@ -1,0 +1,27 @@
+stages:
+  - build
+
+variables:
+  NPM_CONFIG_CACHE: .npm
+  CYPRESS_CACHE_FOLDER: .cypress-cache
+
+build:
+  image: cypress/base:16
+  stage: build
+  script:
+    - npm ci
+    # CHOKIDAR_USEPOLLING should fix an issue with the file watchers set up
+    # by Cypress, see link below
+    # https://github.com/cypress-io/cypress/issues/17173#issuecomment-887257762
+    # - CHOKIDAR_USEPOLLING=1 npm run test:ci
+    - npm run test:ci
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - $NPM_CONFIG_CACHE
+      - $CYPRESS_CACHE_FOLDER
+  rules:
+    - when: always
+  interruptible: true
