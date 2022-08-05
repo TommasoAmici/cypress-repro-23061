@@ -12,7 +12,6 @@
 // You can read more here:
 // https://on.cypress.io/configuration
 // ***********************************************************
-import "cypress-real-events/support";
 import { html, render } from "lit";
 
 /**

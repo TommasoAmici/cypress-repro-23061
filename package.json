@@ -2,20 +2,12 @@
   "name": "cypress-repro-23061",
   "version": "0.1.0",
   "scripts": {
-    "combine:reports": "jrm coverage/junit.xml \"coverage/specs/*.xml\"",
-    "delete:reports": "rm coverage/specs/*.xml || true",
-    "pretest:ci": "npm run delete:reports",
     "test:ci": "cypress run --headless --component --spec 'cypress/**/*.cy.js' --config watchForFileChanges=false",
-    "posttest:ci": "npm run combine:reports",
     "test": "cypress open --component"
   },
   "devDependencies": {
-    "cypress": "10.4.0",
-    "cypress-multi-reporters": "1.6.1",
-    "cypress-real-events": "1.7.1",
-    "junit-report-merger": "4.0.0",
+    "cypress": "10.3.1",
     "lit": "2.2.8",
-    "mocha-junit-reporter": "2.0.2",
     "vite": "3.0.4"
   }
 }
